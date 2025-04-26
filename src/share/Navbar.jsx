@@ -1,13 +1,34 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const links = (
     <>
-      <li>Home</li>
-      <li>Contact</li>
-      <li>Service</li>
+      <li>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) => (isActive ? "text-pink-400" : "")}
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/contact"}
+          className={({ isActive }) => (isActive ? "text-pink-400" : "")}
+        >
+          Contact
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/service"}
+          className={({ isActive }) => (isActive ? "text-pink-400" : "")}
+        >
+          service
+        </NavLink>
+      </li>
     </>
   );
   return (
@@ -47,7 +68,9 @@ const Navbar = () => {
         <div className="navbar-end">
           {user?.email ? (
             <>
-              <button onClick={logOut} className="btn bg-green-400">LogOut</button>
+              <button onClick={logOut} className="btn bg-green-400">
+                LogOut
+              </button>
             </>
           ) : (
             <>
