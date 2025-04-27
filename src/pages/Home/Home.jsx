@@ -28,7 +28,7 @@ const Home = () => {
           {products.map((product) => (
             <div key={product._id} className="card bg-base-100 w-96 shadow-sm">
               <figure>
-                <img src={product.image} alt="Shoes" />
+                <img src={product.image} className="object-cover h-[200px] w-[400px]" alt="Shoes" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{product.title}</h2>

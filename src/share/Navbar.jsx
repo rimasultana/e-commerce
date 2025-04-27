@@ -23,10 +23,10 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to={"/service"}
+          to={"/additem"}
           className={({ isActive }) => (isActive ? "text-pink-400" : "")}
         >
-          service
+          Add Items
         </NavLink>
       </li>
     </>

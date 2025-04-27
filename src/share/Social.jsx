@@ -3,15 +3,44 @@ import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router";
 
 import { FcGoogle } from "react-icons/fc";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Social = () => {
-  const { googleLogin } = useAuth();
+  const { googleLogin, user } = useAuth();
+  console.log(user);
+  const axiosPublic = useAxiosPublic();
+
   const navigate = useNavigate();
   const handleGoogleLogin = () => {
     googleLogin()
-      .then(() => {
-        toast.success("Login SuccessFully");
-        navigate("/");
+      .then((res) => {
+        const userInfo = {
+          email: res?.user?.email,
+          name: res?.user?.displayName,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          console.log(res);
+          if (res?.data?.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Register Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
+          } else {
+            Swal.fire({
+              position: "top-top",
+              icon: "success",
+              title: "Login Successfully!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
+          }
+        });
       })
       .catch((error) => {
         toast.error(error.message);

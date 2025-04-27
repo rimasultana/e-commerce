@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ViewDetails from "../pages/ViewDetails";
 import Update from "../pages/Update";
+import AddItem from "../pages/AddItem";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
       },
+      {
+        path:"/additem",
+        element:<AddItem/>
+      }
     ],
   },
 ]);

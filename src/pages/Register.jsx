@@ -5,14 +5,16 @@ import { Link, useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createSingUp } = useAuth();
+  const { createSingUp, user } = useAuth();
+  console.log(user);
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
     createSingUp(data.email, data.password)
-      .then(() => {
+      .then((res) => {
+        console.log(res);
         toast.success("Register Successfully");
         navigate("/");
       })
