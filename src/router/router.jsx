@@ -6,6 +6,7 @@ import Register from "../pages/Register";
 import ViewDetails from "../pages/ViewDetails";
 import Update from "../pages/Update";
 import AddItem from "../pages/AddItem";
+import UsersList from "../pages/UsersList";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,9 @@ const router = createBrowserRouter([
       {
         path:"/additem",
         element:<AddItem/>
+      },{
+        path:"/userlist",
+        element:<UsersList/>
       }
     ],
   },
